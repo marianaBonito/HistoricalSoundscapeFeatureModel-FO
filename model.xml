@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<featureModel>
+	<properties>
+		<graphics key="showhiddenfeatures" value="true"/>
+		<graphics key="legendposition" value="346,263"/>
+		<graphics key="legendautolayout" value="false"/>
+		<graphics key="showshortnames" value="false"/>
+		<graphics key="layout" value="horizontal"/>
+		<graphics key="showcollapsedconstraints" value="true"/>
+		<graphics key="legendhidden" value="false"/>
+		<graphics key="layoutalgorithm" value="1"/>
+	</properties>
+	<struct>
+		<and abstract="true" mandatory="true" name="HistoricalSoundscapeFO">
+			<description>Features for end users of the platform. </description>
+			<graphics key="collapsed" value="false"/>
+			<alt abstract="true" name="MobileApp">
+				<and name="StoryTelling">
+					<urls>
+						Location Based Storytelling and Augmented Reality - https://www.youtube.com/watch?v=ddyUp26qvhw
+						HearUsHere - https://www.youtube.com/watch?v=MyX3K3Ro958&amp;feature=emb_logo
+					</urls>
+					<graphics key="collapsed" value="false"/>
+					<or abstract="true" mandatory="true" name="UserLocation">
+						<feature name="Geolocation"/>
+						<feature name="Gyroscope"/>
+					</or>
+				</and>
+				<and name="QRCodeScanner">
+					<urls>QRScanner Augmented Reality Example - https://www.youtube.com/watch?v=b6fNPMgVbTo</urls>
+					<feature mandatory="true" name="CameraAccess"/>
+				</and>
+			</alt>
+			<feature mandatory="true" name="Login"/>
+			<feature mandatory="true" name="IndividualUserAccounts"/>
+			<feature name="MultimediaDisplay360">
+				<urls>London Tour Example - https://www.youtube.com/watch?v=m9EClKA1VeQ</urls>
+			</feature>
+			<and mandatory="true" name="Map">
+				<and mandatory="true" name="SelectableLocation">
+					<urls>Selectable location PASEV - https://www.youtube.com/watch?v=byIbpQOcD-s</urls>
+					<feature mandatory="true" name="Images"/>
+					<feature mandatory="true" name="Videos"/>
+					<feature mandatory="true" name="Sound"/>
+					<feature mandatory="true" name="References"/>
+					<feature name="AddPersonalMultimedia"/>
+				</and>
+				<feature mandatory="true" name="MultipleLayers">
+					<urls>Multiple map layers PASEV - https://www.youtube.com/watch?v=zK2ut7mWTi8</urls>
+				</feature>
+				<feature mandatory="true" name="UserResponsive">
+					<description>Map must be able to move as user scrolls or interacts with it.</description>
+					<urls>
+						User responsive map PASEV - https://www.youtube.com/watch?v=YDSfULBh7zI
+					</urls>
+				</feature>
+				<or abstract="true" name="FilterDisplayedArea">
+					<feature name="InputAreaName">
+						<description>Ex. City name or country name.</description>
+						<urls>Map search PASEV - https://www.youtube.com/watch?v=JiBc0ls3cP4</urls>
+					</feature>
+					<feature name="DragAndZoom">
+						<urls>Map zoom PASEV - https://www.youtube.com/watch?v=dbUC-NMt078</urls>
+					</feature>
+				</or>
+			</and>
+			<feature mandatory="true" name="SelectableItenerary"/>
+			<feature mandatory="true" name="SelectableEvents">
+				<urls>
+					Selectable events PASEV - https://www.youtube.com/watch?v=BpeuRcAJbXw
+				</urls>
+			</feature>
+			<feature name="FileAccess">
+				<urls>
+					Too many requests example - https://media.nngroup.com/media/editor/2019/03/20/ezgifcom-optimize.gif
+					iOS vs Android example - https://media.nngroup.com/media/editor/2019/03/20/google_translate.png
+				</urls>
+			</feature>
+			<and mandatory="true" name="Timeline">
+				<graphics key="collapsed" value="false"/>
+				<or abstract="true" mandatory="true" name="Filter">
+					<or abstract="true" name="MapFilter">
+						<feature name="AvailableMapLayers"/>
+						<feature name="PresentedLocations">
+							<urls>Filter presented location PASEV - https://www.youtube.com/watch?v=IhEfg-NdG6o</urls>
+						</feature>
+					</or>
+					<feature name="PresentedEvents"/>
+					<feature name="PresentedIteneraries"/>
+				</or>
+			</and>
+		</and>
+	</struct>
+	<constraints>
+		<rule>
+			<imp>
+				<var>AddPersonalMultimedia</var>
+				<var>FileAccess</var>
+			</imp>
+		</rule>
+	</constraints>
+</featureModel>
