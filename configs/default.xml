@@ -25,7 +25,7 @@
 	<feature manual="selected" name="DragAndZoom"/>
 	<feature automatic="selected" name="SelectableItenerary"/>
 	<feature automatic="selected" name="SelectableEvents"/>
-	<feature automatic="selected" name="FileAccess"/>
+	<feature automatic="selected" manual="selected" name="FileAccess"/>
 	<feature automatic="selected" name="Timeline"/>
 	<feature automatic="selected" name="Filter"/>
 	<feature automatic="selected" manual="selected" name="MapFilter"/>
