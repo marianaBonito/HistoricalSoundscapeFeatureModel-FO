@@ -1,36 +1,50 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <configuration>
 	<feature automatic="selected" name="HistoricalSoundscapeFO"/>
-	<feature automatic="selected" manual="selected" name="MobileApp"/>
-	<feature automatic="selected" manual="selected" name="StoryTelling"/>
+	<feature automatic="selected" name="LocationBasedSoundscape"/>
+	<feature manual="selected" name="StoryTelling"/>
+	<feature automatic="unselected" name="QRCodeScanner"/>
+	<feature automatic="unselected" name="CameraAccess"/>
 	<feature automatic="selected" name="UserLocation"/>
 	<feature manual="selected" name="Geolocation"/>
 	<feature manual="selected" name="Gyroscope"/>
-	<feature automatic="unselected" name="QRCodeScanner"/>
-	<feature automatic="unselected" name="CameraAccess"/>
 	<feature automatic="selected" name="Login"/>
 	<feature automatic="selected" name="IndividualUserAccounts"/>
 	<feature manual="selected" name="MultimediaDisplay360"/>
 	<feature automatic="selected" name="Map"/>
 	<feature automatic="selected" name="SelectableLocation"/>
-	<feature automatic="selected" name="Images"/>
-	<feature automatic="selected" name="Videos"/>
-	<feature automatic="selected" name="Sound"/>
-	<feature automatic="selected" name="References"/>
-	<feature manual="selected" name="AddPersonalMultimedia"/>
+	<feature automatic="selected" name="LocationImages"/>
+	<feature manual="selected" name="LocationVideos"/>
+	<feature manual="selected" name="LocationSound"/>
+	<feature automatic="selected" name="LocationReferencesAndSources"/>
+	<feature manual="selected" name="AddLocationPersonalMultimedia"/>
 	<feature automatic="selected" name="MultipleLayers"/>
 	<feature automatic="selected" name="UserResponsive"/>
 	<feature automatic="selected" manual="selected" name="FilterDisplayedArea"/>
 	<feature manual="selected" name="InputAreaName"/>
 	<feature manual="selected" name="DragAndZoom"/>
-	<feature automatic="selected" name="SelectableItenerary"/>
-	<feature automatic="selected" name="SelectableEvents"/>
+	<feature manual="selected" name="ViewCurrentLocation"/>
+	<feature automatic="selected" name="SelectableItinerary"/>
 	<feature automatic="selected" manual="selected" name="FileAccess"/>
-	<feature automatic="selected" name="Timeline"/>
-	<feature automatic="selected" name="Filter"/>
-	<feature automatic="selected" manual="selected" name="MapFilter"/>
-	<feature manual="selected" name="AvailableMapLayers"/>
-	<feature manual="selected" name="PresentedLocations"/>
-	<feature manual="selected" name="PresentedEvents"/>
-	<feature manual="selected" name="PresentedIteneraries"/>
+	<feature automatic="selected" name="TemporalFilter"/>
+	<feature automatic="unselected" name="Timeline"/>
+	<feature automatic="unselected" name="TimelineMapFilter"/>
+	<feature automatic="unselected" name="TimelineAvailableMapLayers"/>
+	<feature automatic="unselected" name="TimelinePresentedLocations"/>
+	<feature automatic="unselected" name="TimelinePresentedEvents"/>
+	<feature automatic="unselected" name="TimelinePresentedIteneraries"/>
+	<feature automatic="selected" manual="selected" name="CustomizablePeriod"/>
+	<feature automatic="selected" manual="selected" name="PeriodMapFilter"/>
+	<feature manual="selected" name="PeriodAvailableMapLayers"/>
+	<feature manual="selected" name="PeriodPresentedLocations"/>
+	<feature manual="selected" name="PeriodPresentedEvents"/>
+	<feature manual="selected" name="PeriodPresentedIteneraries"/>
+	<feature automatic="selected" name="DisplayMultimedia"/>
+	<feature manual="selected" name="DifferentCities"/>
+	<feature automatic="selected" name="SelectableEvents"/>
+	<feature automatic="selected" name="EventImages"/>
+	<feature manual="selected" name="EventVideos"/>
+	<feature manual="selected" name="EventSound"/>
+	<feature automatic="selected" name="EventReferencesAndSources"/>
+	<feature manual="selected" name="AddEventPersonalMultimedia"/>
 </configuration>

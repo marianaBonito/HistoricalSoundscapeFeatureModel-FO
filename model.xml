@@ -2,7 +2,7 @@
 <featureModel>
 	<properties>
 		<graphics key="showhiddenfeatures" value="true"/>
-		<graphics key="legendposition" value="346,263"/>
+		<graphics key="legendposition" value="244,328"/>
 		<graphics key="legendautolayout" value="false"/>
 		<graphics key="showshortnames" value="false"/>
 		<graphics key="layout" value="horizontal"/>
@@ -14,47 +14,45 @@
 		<and abstract="true" mandatory="true" name="HistoricalSoundscapeFO">
 			<description>Features for end users of the platform. </description>
 			<graphics key="collapsed" value="false"/>
-			<alt abstract="true" name="MobileApp">
-				<and name="StoryTelling">
+			<alt abstract="true" name="LocationBasedSoundscape">
+				<feature name="StoryTelling">
 					<urls>
 						Location Based Storytelling and Augmented Reality - https://www.youtube.com/watch?v=ddyUp26qvhw
 						HearUsHere - https://www.youtube.com/watch?v=MyX3K3Ro958&amp;feature=emb_logo
 					</urls>
 					<graphics key="collapsed" value="false"/>
-					<or abstract="true" mandatory="true" name="UserLocation">
-						<feature name="Geolocation"/>
-						<feature name="Gyroscope"/>
-					</or>
-				</and>
+				</feature>
 				<and name="QRCodeScanner">
 					<urls>QRScanner Augmented Reality Example - https://www.youtube.com/watch?v=b6fNPMgVbTo</urls>
 					<feature mandatory="true" name="CameraAccess"/>
 				</and>
 			</alt>
-			<feature mandatory="true" name="Login"/>
-			<feature mandatory="true" name="IndividualUserAccounts"/>
+			<or abstract="true" name="UserLocation">
+				<feature name="Geolocation"/>
+				<feature name="Gyroscope"/>
+			</or>
+			<feature name="Login"/>
+			<feature name="IndividualUserAccounts"/>
 			<feature name="MultimediaDisplay360">
 				<urls>London Tour Example - https://www.youtube.com/watch?v=m9EClKA1VeQ</urls>
 			</feature>
 			<and mandatory="true" name="Map">
 				<and mandatory="true" name="SelectableLocation">
 					<urls>Selectable location PASEV - https://www.youtube.com/watch?v=byIbpQOcD-s</urls>
-					<feature mandatory="true" name="Images"/>
-					<feature mandatory="true" name="Videos"/>
-					<feature mandatory="true" name="Sound"/>
-					<feature mandatory="true" name="References"/>
-					<feature name="AddPersonalMultimedia"/>
+					<feature mandatory="true" name="LocationImages"/>
+					<feature name="LocationVideos"/>
+					<feature name="LocationSound"/>
+					<feature mandatory="true" name="LocationReferencesAndSources"/>
+					<feature name="AddLocationPersonalMultimedia"/>
 				</and>
 				<feature mandatory="true" name="MultipleLayers">
 					<urls>Multiple map layers PASEV - https://www.youtube.com/watch?v=zK2ut7mWTi8</urls>
 				</feature>
 				<feature mandatory="true" name="UserResponsive">
 					<description>Map must be able to move as user scrolls or interacts with it.</description>
-					<urls>
-						User responsive map PASEV - https://www.youtube.com/watch?v=YDSfULBh7zI
-					</urls>
+					<urls>User responsive map PASEV - https://www.youtube.com/watch?v=YDSfULBh7zI</urls>
 				</feature>
-				<or abstract="true" name="FilterDisplayedArea">
+				<or abstract="true" mandatory="true" name="FilterDisplayedArea">
 					<feature name="InputAreaName">
 						<description>Ex. City name or country name.</description>
 						<urls>Map search PASEV - https://www.youtube.com/watch?v=JiBc0ls3cP4</urls>
@@ -63,39 +61,85 @@
 						<urls>Map zoom PASEV - https://www.youtube.com/watch?v=dbUC-NMt078</urls>
 					</feature>
 				</or>
+				<feature name="ViewCurrentLocation"/>
 			</and>
-			<feature mandatory="true" name="SelectableItenerary"/>
-			<feature mandatory="true" name="SelectableEvents">
-				<urls>
-					Selectable events PASEV - https://www.youtube.com/watch?v=BpeuRcAJbXw
-				</urls>
-			</feature>
+			<feature mandatory="true" name="SelectableItinerary"/>
 			<feature name="FileAccess">
 				<urls>
 					Too many requests example - https://media.nngroup.com/media/editor/2019/03/20/ezgifcom-optimize.gif
 					iOS vs Android example - https://media.nngroup.com/media/editor/2019/03/20/google_translate.png
 				</urls>
 			</feature>
-			<and mandatory="true" name="Timeline">
+			<alt mandatory="true" name="TemporalFilter">
 				<graphics key="collapsed" value="false"/>
-				<or abstract="true" mandatory="true" name="Filter">
-					<or abstract="true" name="MapFilter">
-						<feature name="AvailableMapLayers"/>
-						<feature name="PresentedLocations">
+				<or name="Timeline">
+					<or abstract="true" name="TimelineMapFilter">
+						<feature name="TimelineAvailableMapLayers"/>
+						<feature name="TimelinePresentedLocations">
 							<urls>Filter presented location PASEV - https://www.youtube.com/watch?v=IhEfg-NdG6o</urls>
 						</feature>
 					</or>
-					<feature name="PresentedEvents"/>
-					<feature name="PresentedIteneraries"/>
+					<feature name="TimelinePresentedEvents"/>
+					<feature name="TimelinePresentedIteneraries"/>
 				</or>
+				<or name="CustomizablePeriod">
+					<or abstract="true" name="PeriodMapFilter">
+						<feature name="PeriodAvailableMapLayers"/>
+						<feature name="PeriodPresentedLocations">
+							<urls>Filter presented location PASEV - https://www.youtube.com/watch?v=IhEfg-NdG6o</urls>
+						</feature>
+					</or>
+					<feature name="PeriodPresentedEvents"/>
+					<feature name="PeriodPresentedIteneraries"/>
+				</or>
+			</alt>
+			<feature mandatory="true" name="DisplayMultimedia"/>
+			<feature name="DifferentCities"/>
+			<and mandatory="true" name="SelectableEvents">
+				<urls>Selectable events PASEV - https://www.youtube.com/watch?v=BpeuRcAJbXw</urls>
+				<feature mandatory="true" name="EventImages"/>
+				<feature name="EventVideos"/>
+				<feature name="EventSound"/>
+				<feature mandatory="true" name="EventReferencesAndSources"/>
+				<feature name="AddEventPersonalMultimedia"/>
 			</and>
 		</and>
 	</struct>
 	<constraints>
 		<rule>
 			<imp>
-				<var>AddPersonalMultimedia</var>
+				<var>AddLocationPersonalMultimedia</var>
 				<var>FileAccess</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>AddEventPersonalMultimedia</var>
+				<var>FileAccess</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>ViewCurrentLocation</var>
+				<var>UserLocation</var>
+			</imp>
+		</rule>
+		<rule>
+			<eq>
+				<var>IndividualUserAccounts</var>
+				<var>Login</var>
+			</eq>
+		</rule>
+		<rule>
+			<imp>
+				<var>AddLocationPersonalMultimedia</var>
+				<var>IndividualUserAccounts</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>AddEventPersonalMultimedia</var>
+				<var>IndividualUserAccounts</var>
 			</imp>
 		</rule>
 	</constraints>
