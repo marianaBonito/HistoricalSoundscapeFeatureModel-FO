@@ -2,7 +2,7 @@
 <featureModel>
 	<properties>
 		<graphics key="showhiddenfeatures" value="true"/>
-		<graphics key="legendposition" value="244,328"/>
+		<graphics key="legendposition" value="507,281"/>
 		<graphics key="legendautolayout" value="false"/>
 		<graphics key="showshortnames" value="false"/>
 		<graphics key="layout" value="horizontal"/>
@@ -12,10 +12,22 @@
 	</properties>
 	<struct>
 		<and abstract="true" mandatory="true" name="HistoricalSoundscapeFO">
-			<description>Features for end users of the platform. </description>
+			<description>Features for client users of the platform.</description>
 			<graphics key="collapsed" value="false"/>
 			<alt abstract="true" name="LocationBasedSoundscape">
+				<description>
+					This abstract feature serves to indicate whether an implementation
+					of a software allows the client user to listen to the historical
+					soundscape based on its current location.
+					This also increases the level of interactiveness between the
+					platform and the user.
+				</description>
 				<feature name="StoryTelling">
+					<description>
+						This feature consists on accessing the user's location and
+						displaying the multimedia relevant to the places the user
+						visits automatically.
+					</description>
 					<urls>
 						Location Based Storytelling and Augmented Reality - https://www.youtube.com/watch?v=ddyUp26qvhw
 						HearUsHere - https://www.youtube.com/watch?v=MyX3K3Ro958&amp;feature=emb_logo
@@ -23,29 +35,93 @@
 					<graphics key="collapsed" value="false"/>
 				</feature>
 				<and name="QRCodeScanner">
+					<description>
+						This feature requires the software to incorporate a QR Scanner
+						and processor so that when the user visits different locations,
+						he/she can scan the QR code previously placed in that Location
+						and have the multimedia relevant to that place displayed.
+					</description>
 					<urls>QRScanner Augmented Reality Example - https://www.youtube.com/watch?v=b6fNPMgVbTo</urls>
-					<feature mandatory="true" name="CameraAccess"/>
+					<feature mandatory="true" name="CameraAccess">
+						<description>
+							This feature requires the software to ask permission to
+							access the user's camera. If permission is not granted, the
+							parent feature will not work.
+						</description>
+					</feature>
 				</and>
 			</alt>
 			<or abstract="true" name="UserLocation">
-				<feature name="Geolocation"/>
-				<feature name="Gyroscope"/>
+				<description>
+					This feature requires the software to ask for permission to
+					access the user's location. If permission is not granted
+					features dependent on this feature will not work properly.
+				</description>
+				<feature name="Geolocation">
+					<description>
+						This is one of the available types of user location data. It
+						indicates in terms of map coordinates where the user is.
+					</description>
+				</feature>
+				<feature name="Gyroscope">
+					<description>
+						This feature allows the software to know where a user is
+						facing and can be useful when including 360 multimedia
+						display.
+					</description>
+				</feature>
 			</or>
-			<feature name="Login"/>
-			<feature name="IndividualUserAccounts"/>
+			<feature name="Login">
+				<description>
+					This feature allows the user's  to validate their credentials
+					and access their private data.
+				</description>
+			</feature>
+			<feature name="IndividualUserAccounts">
+				<description>This feature allows user's to have private data in the system.</description>
+			</feature>
 			<feature name="MultimediaDisplay360">
+				<description>
+					This feature allows the user to experience multimedia all
+					around. There are currently two options for implementing
+					this feature. Either dragging acress the screen or using the
+					user's gyroscope.
+				</description>
 				<urls>London Tour Example - https://www.youtube.com/watch?v=m9EClKA1VeQ</urls>
 			</feature>
 			<and mandatory="true" name="Map">
+				<description>
+					This is one of the main features as it is the feature where
+					the rest of the information is displayed and the feature
+					the user most interacts with.
+				</description>
 				<and mandatory="true" name="SelectableLocation">
+					<description>
+						This feature allows the user to view the data relative to a
+						particualr Place by clicking on it in the map.
+					</description>
 					<urls>Selectable location PASEV - https://www.youtube.com/watch?v=byIbpQOcD-s</urls>
-					<feature mandatory="true" name="LocationImages"/>
-					<feature name="LocationVideos"/>
-					<feature name="LocationSound"/>
-					<feature mandatory="true" name="LocationReferencesAndSources"/>
-					<feature name="AddLocationPersonalMultimedia"/>
+					<feature mandatory="true" name="LocationImages">
+						<description>This feature associates images to a location.</description>
+					</feature>
+					<feature name="LocationVideos">
+						<description>This feature associates videos to a location.</description>
+					</feature>
+					<feature name="LocationSound">
+						<description>This feature associates sounds to a location.</description>
+					</feature>
+					<feature mandatory="true" name="LocationReferencesAndSources">
+						<description>This feature associates references and sources to a location.</description>
+					</feature>
+					<feature name="AddLocationPersonalMultimedia">
+						<description>
+							This feature allows a user to add private multimedia to a
+							location that will only be visible to him/her.
+						</description>
+					</feature>
 				</and>
 				<feature mandatory="true" name="MultipleLayers">
+					<description>This feature ensures the map can have multiple layers displayed.</description>
 					<urls>Multiple map layers PASEV - https://www.youtube.com/watch?v=zK2ut7mWTi8</urls>
 				</feature>
 				<feature mandatory="true" name="UserResponsive">
@@ -53,55 +129,173 @@
 					<urls>User responsive map PASEV - https://www.youtube.com/watch?v=YDSfULBh7zI</urls>
 				</feature>
 				<or abstract="true" mandatory="true" name="FilterDisplayedArea">
+					<description>
+						This abstract feature indicates the map must be dynamic
+						and be able to change the area visible to the user as requested.
+					</description>
 					<feature name="InputAreaName">
-						<description>Ex. City name or country name.</description>
+						<description>
+							This feature allows the user to select what area to display
+							by typing into a designated input area, the desired location
+							Ex. City name or country name.
+						</description>
 						<urls>Map search PASEV - https://www.youtube.com/watch?v=JiBc0ls3cP4</urls>
 					</feature>
 					<feature name="DragAndZoom">
+						<description>
+							This feature represents the ability for the user to drag
+							across the map and zoom in and out of a chosen area.
+						</description>
 						<urls>Map zoom PASEV - https://www.youtube.com/watch?v=dbUC-NMt078</urls>
 					</feature>
 				</or>
-				<feature name="ViewCurrentLocation"/>
+				<feature name="ViewCurrentLocation">
+					<description>
+						This feature should display on the map the user's current
+						location.
+					</description>
+				</feature>
 			</and>
-			<feature mandatory="true" name="SelectableItinerary"/>
+			<feature mandatory="true" name="SelectableItinerary">
+				<description>
+					This feature allows the user to view the data relative to a
+					particualr Itinerary by clicking on it from a list.
+				</description>
+			</feature>
 			<feature name="FileAccess">
+				<description>
+					This feature requires the software to request access to the
+					user's files. If not granted, the features dependent on this
+					feature will not work properly.
+				</description>
 				<urls>
 					Too many requests example - https://media.nngroup.com/media/editor/2019/03/20/ezgifcom-optimize.gif
 					iOS vs Android example - https://media.nngroup.com/media/editor/2019/03/20/google_translate.png
 				</urls>
 			</feature>
-			<alt mandatory="true" name="TemporalFilter">
+			<alt abstract="true" mandatory="true" name="TemporalFilter">
+				<description>
+					This feature allows the user to filter the available data so it
+					only displays the content relative to a particular time period.
+				</description>
 				<graphics key="collapsed" value="false"/>
 				<or name="Timeline">
+					<description>
+						This feature filters the available data by having  the user
+						select which pre-determined periods it wishes to see.
+					</description>
 					<or abstract="true" name="TimelineMapFilter">
-						<feature name="TimelineAvailableMapLayers"/>
+						<description>
+							This abstract feature represents the content that must be
+							filtered on the map when a particular period is selected
+							from the timeline.
+						</description>
+						<feature name="TimelineAvailableMapLayers">
+							<description>
+								This feature represents the map layers displayed when a
+								particular period is selected.
+							</description>
+						</feature>
 						<feature name="TimelinePresentedLocations">
+							<description>
+								This feature represents the locations displayed when a
+								particular period is selected.
+							</description>
 							<urls>Filter presented location PASEV - https://www.youtube.com/watch?v=IhEfg-NdG6o</urls>
 						</feature>
 					</or>
-					<feature name="TimelinePresentedEvents"/>
-					<feature name="TimelinePresentedIteneraries"/>
+					<feature name="TimelinePresentedEvents">
+						<description>
+							This  feature represents the events that must be filtered
+							when a particular period is selected from the timeline.
+						</description>
+					</feature>
+					<feature name="TimelinePresentedIteneraries">
+						<description>
+							This  feature represents the itineraries that must be filtered
+							when a particular period is selected from the timeline.
+						</description>
+					</feature>
 				</or>
 				<or name="CustomizablePeriod">
+					<description>
+						This feature filters the available data by having  the user
+						input which periods it wishes to see.
+						The user should be able to indicate the begining and the
+						end of the desired period.
+					</description>
 					<or abstract="true" name="PeriodMapFilter">
-						<feature name="PeriodAvailableMapLayers"/>
+						<description>
+							This abstract feature represents the content that must be
+							filtered on the map  when a particular period is selected on
+							the customizable period.
+						</description>
+						<feature name="PeriodAvailableMapLayers">
+							<description>
+								This feature represents the map layers displayed when a
+								particular period is selected.
+							</description>
+						</feature>
 						<feature name="PeriodPresentedLocations">
+							<description>
+								This feature represents the locations displayed when a
+								particular period is selected.
+							</description>
 							<urls>Filter presented location PASEV - https://www.youtube.com/watch?v=IhEfg-NdG6o</urls>
 						</feature>
 					</or>
-					<feature name="PeriodPresentedEvents"/>
-					<feature name="PeriodPresentedIteneraries"/>
+					<feature name="PeriodPresentedEvents">
+						<description>
+							This  feature represents the events that must be filtered
+							when a particular period is selected on  the customizable
+							period.
+						</description>
+					</feature>
+					<feature name="PeriodPresentedIteneraries">
+						<description>
+							This  feature represents the itineraries that must be
+							filtered when a particular period is selected on
+							the customizable period.
+						</description>
+					</feature>
 				</or>
 			</alt>
-			<feature mandatory="true" name="DisplayMultimedia"/>
-			<feature name="DifferentCities"/>
+			<feature mandatory="true" name="DisplayMultimedia">
+				<description>
+					This feature represents the ability a software must have of
+					displaying all types of multimedia.
+				</description>
+			</feature>
+			<feature name="DifferentCities">
+				<description>
+					This feature is used if the software being designed has more
+					than one city of focus for its historical soundscapes.
+				</description>
+			</feature>
 			<and mandatory="true" name="SelectableEvents">
+				<description>
+					This feature allows the user to view the data relative to a
+					particualr Event by clicking on it from a list.
+				</description>
 				<urls>Selectable events PASEV - https://www.youtube.com/watch?v=BpeuRcAJbXw</urls>
-				<feature mandatory="true" name="EventImages"/>
-				<feature name="EventVideos"/>
-				<feature name="EventSound"/>
-				<feature mandatory="true" name="EventReferencesAndSources"/>
-				<feature name="AddEventPersonalMultimedia"/>
+				<feature mandatory="true" name="EventImages">
+					<description>This feature associates images to an event.</description>
+				</feature>
+				<feature name="EventVideos">
+					<description>This feature associates videos to an event.</description>
+				</feature>
+				<feature name="EventSound">
+					<description>This feature associates sounds to an event.</description>
+				</feature>
+				<feature mandatory="true" name="EventReferencesAndSources">
+					<description>This feature associates references and sources to an event.</description>
+				</feature>
+				<feature name="AddEventPersonalMultimedia">
+					<description>
+						This feature allows a user to add private multimedia to an
+						event that will only be visible to him/her.
+					</description>
+				</feature>
 			</and>
 		</and>
 	</struct>
@@ -121,7 +315,13 @@
 		<rule>
 			<imp>
 				<var>ViewCurrentLocation</var>
-				<var>UserLocation</var>
+				<var>Geolocation</var>
+			</imp>
+		</rule>
+		<rule>
+			<imp>
+				<var>StoryTelling</var>
+				<var>Geolocation</var>
 			</imp>
 		</rule>
 		<rule>
